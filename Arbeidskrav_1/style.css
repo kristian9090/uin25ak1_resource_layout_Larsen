@@ -8,9 +8,22 @@
 }
 
 header {
-    
+    display: flex;
+    nav, h2{
+        flex-direction: row;
+        color: var(--white);
+        background-color: var(--dark);
+        
+    }
 }
 
 body {
     background-color: var(--white2);
+    article {
+        background-color: var(--white);
+        h3 {
+            color: var(--white);
+            background-color: var(--dark);
+        }
+    }
 }
