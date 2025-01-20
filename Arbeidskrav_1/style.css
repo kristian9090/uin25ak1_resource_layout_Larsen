@@ -38,15 +38,18 @@ body {
         justify-content: center;
         align-items: center;
         h3 {
+            margin-left: 20px;
             color: var(--dark);
             font-size: 24px;
         }
         p {
+            margin-left: 20px;
             color: var(--dark);
             font-size: 18px;
         }
         ul {
             li {
+                margin-left: 20px;
                 color: var(--dark);
                 font-size: 18px;
                 margin-bottom: 1rem;

@@ -15,7 +15,7 @@ const resources = [
                 title: "HTML.com Tutorials",
                 url: "https://html.com/"
             },
-        ]
+        ],
     },
     {
         category: "CSS",
@@ -110,4 +110,7 @@ resources.forEach(resource => {
     `
 })
 
-document.getElementById("info-section").innerHTML = resourcesHTML
+const infoSection = document.getElementById("info-section");
+if (infoSection) {
+    infoSection.innerHTML = resourcesHTML;
+}
