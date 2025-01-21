@@ -9,26 +9,28 @@
 
 
 body {
-    background-color: var(--white2);
-    width: 90%;
-    justify-content: center;
-    align-items: center;
     font-family: 'Montserrat', sans-serif;
+    background-color: var(--white2);
+    margin: 0 auto;
     header {
+        background-color: var(--white2);
         width: 90%;
-        nav{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            color: var(--white);
-            gap: 1rem;
-            button {
-                border: none;
-                background-color: var(--dark);
+        justify-content: center;
+        align-items: center;
+        font-family: 'Montserrat', sans-serif;
+            nav{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
                 color: var(--white);
-                font-size: 18px;
-                padding: 10px;
-            }
+                gap: 1rem;
+                button {
+                    border: none;
+                    background-color: var(--dark);
+                    color: var(--white);
+                    font-size: 18px;
+                    padding: 10px;
+                }
         }
     }
     article {
