@@ -95,22 +95,23 @@ const resources = [
     },
 ]
 
-let resourcesHTML = ""
-resources.forEach(resource => {
-    resourcesHTML += `
-        <div class="resource">
+
+function showInfo(category) {
+    const resource = resources.find(resource => resource.category === category);
+    
+    let resourcesHTML = "";
+    if (resource) {
+        resourcesHTML += `
+            <article>
             <h3>${resource.category}</h3>
             <p>${resource.text}</p>
             <ul>
-                ${resource.sources.map(source => `
-                    <li><a href="${source.url}" target="_blank">${source.title}</a></li>
-                `).join("")}
+            ${resource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`).join('')}
             </ul>
-        </div>
-    `
-})
-
-const infoSection = document.getElementById("info-section");
-if (infoSection) {
-    infoSection.innerHTML = resourcesHTML;
+        </article>
+        `;
+    } else {
+        return "Ingen data å hente :(";
+    }
+    document.getElementById("info-section").innerHTML = resourcesHTML;
 }
