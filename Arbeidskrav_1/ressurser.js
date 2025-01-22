@@ -96,9 +96,13 @@ const resources = [
 ]
 
 
+// Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
 function showInfo(category) {
-    const resource = resources.find(resource => resource.category === category);
+
+    // bruker .filter for å se om det finnes en resource med samme kategori som er valgt
+    const resource = resources.filter(resource => resource.category === category)[0];
     
+    // tom variabel som senere oppdateres
     let resourcesHTML = "";
     if (resource) {
         resourcesHTML += `
@@ -106,6 +110,9 @@ function showInfo(category) {
             <h3>${resource.category}</h3>
             <p>${resource.text}</p>
             <ul>
+            <!-- bruker .map for å lage transformere arrayen til en streng
+            bruker .join for å slå sammen strengene
+            -->
             ${resource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`).join('')}
             </ul>
         </article>
@@ -113,5 +120,7 @@ function showInfo(category) {
     } else {
         return "Ingen data å hente :(";
     }
+
+    // Skriver ut artikkel kortet i HTML
     document.getElementById("info-section").innerHTML = resourcesHTML;
 }

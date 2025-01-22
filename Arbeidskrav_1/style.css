@@ -11,35 +11,42 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--white2);
-    margin: 0 auto;
     header {
         background-color: var(--white2);
         width: 90%;
+        width: 1250px;
         justify-content: center;
         align-items: center;
         font-family: 'Montserrat', sans-serif;
             nav{
                 display: flex;
                 flex-direction: row;
-                justify-content: space-evenly;
+                justify-content: space-between;
                 color: var(--white);
                 gap: 1rem;
                 button {
+                    flex: 1;
                     border: none;
                     background-color: var(--dark);
                     color: var(--white);
-                    font-size: 18px;
-                    padding: 10px;
+                    font-size: 20px;
+                    padding: 1rem;
+                }
+                button:focus {
+                    background-color: var(--white);
+                    color: var(--dark);
                 }
         }
     }
     article {
         background-color: var(--white);
-        height: 250px;
-        width: 90%;
+        height: auto;
+        width: 1250px;
         justify-content: center;
         align-items: center;
+        padding-top: 2rem;
         h3 {
+            margin-top: 0;
             margin-left: 20px;
             color: var(--dark);
             font-size: 24px;
@@ -50,6 +57,8 @@ body {
             font-size: 18px;
         }
         ul {
+            display: flex;
+            flex-direction: column;
             li {
                 margin-left: 20px;
                 color: var(--dark);
