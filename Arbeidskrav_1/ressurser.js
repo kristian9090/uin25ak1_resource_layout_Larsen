@@ -97,10 +97,45 @@ const resources = [
 
 
 
-// Når siden lastes inn, kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
+// funksjon der nå siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
 window.onload = function() {
     showInfo('HTML')
-};
+
+}
+
+// function showButton(category) {
+//     // Reset all buttons to default background color
+//     document.querySelectorAll('button').forEach(button => {
+//         button.classList.remove('active');
+//         button.style.backgroundColor = ''; // Reset background color
+//     });
+
+//     let activeButton;
+//     switch (category) {
+//         case 'HTML':
+//             activeButton = document.getElementById('html');
+//             break;
+//         case 'CSS':
+//             activeButton = document.getElementById('css');
+//             break;
+//         case 'JavaScript':
+//             activeButton = document.getElementById('js');
+//             break;
+//         case 'React':
+//             activeButton = document.getElementById('react');
+//             break;
+//         case 'Sanity and headless CMS':
+//             activeButton = document.getElementById('sanity');
+//             break;
+//     }
+
+//     if (activeButton) {
+//         activeButton.classList.add('active');
+//         activeButton.style.backgroundColor = 'white'; // Set white background color
+//     }
+// }
+
+// showButton()
 
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
 function showInfo(category) {
@@ -108,8 +143,11 @@ function showInfo(category) {
     // bruker .filter for å se om det finnes en resource med samme kategori som er valgt
     const resource = resources.filter(resource => resource.category === category)[0];
     
+    const activeButton = document.getElementById(category.toLowerCase());
+    if (activeButton) {
+        activeButton.classList.add("active");
+    }
 
-    
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
     if (resource) {
@@ -133,48 +171,3 @@ function showInfo(category) {
     document.getElementById("info-section").innerHTML = resourcesHTML;
 }
 
-// Funksjon for å oppdatere knappens stil basert på valgt kategori
-function updateButtonStyle(category) {
-    // Henter alle knappene
-    const buttons = document.querySelectorAll('button');
-
-    // Itererer gjennom alle knappene og tilbakestiller stilen
-    buttons.forEach(button => {
-        button.style.backgroundColor = '';
-        button.style.color = '';
-    });
-
-    // Henter knappen for den valgte kategorien og oppdaterer stilen
-    const activeButton = document.querySelector(`button[data-category="${category}"]`);
-    if (activeButton) {
-        activeButton.style.backgroundColor = 'white';
-        activeButton.style.color = 'black';
-    }
-}
-
-// Oppdaterer knappens stil når siden lastes inn
-window.onload = function() {
-    showInfo('HTML');
-    updateButtonStyle('HTML');
-};
-
-// Oppdaterer knappens stil når showInfo funksjonen kalles
-function showInfo(category) {
-    const resource = resources.filter(resource => resource.category === category)[0];
-    let resourcesHTML = "";
-    if (resource) {
-        resourcesHTML += `
-            <article>
-            <h3>${resource.category}</h3>
-            <p>${resource.text}</p>
-            <ul>
-            ${resource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`).join('')}
-            </ul>
-        </article>
-        `;
-    } else {
-        return "Ingen data å hente :(";
-    }
-    document.getElementById("info-section").innerHTML = resourcesHTML;
-    updateButtonStyle(category);
-}
