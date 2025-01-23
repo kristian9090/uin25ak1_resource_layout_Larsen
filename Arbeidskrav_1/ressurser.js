@@ -103,45 +103,12 @@ window.onload = function() {
 
 }
 
-// function showButton(category) {
-//     // Reset all buttons to default background color
-//     document.querySelectorAll('button').forEach(button => {
-//         button.classList.remove('active');
-//         button.style.backgroundColor = ''; // Reset background color
-//     });
-
-//     let activeButton;
-//     switch (category) {
-//         case 'HTML':
-//             activeButton = document.getElementById('html');
-//             break;
-//         case 'CSS':
-//             activeButton = document.getElementById('css');
-//             break;
-//         case 'JavaScript':
-//             activeButton = document.getElementById('js');
-//             break;
-//         case 'React':
-//             activeButton = document.getElementById('react');
-//             break;
-//         case 'Sanity and headless CMS':
-//             activeButton = document.getElementById('sanity');
-//             break;
-//     }
-
-//     if (activeButton) {
-//         activeButton.classList.add('active');
-//         activeButton.style.backgroundColor = 'white'; // Set white background color
-//     }
-// }
-
-// showButton()
-
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
 function showInfo(category) {
 
     // bruker .filter for å se om det finnes en resource med samme kategori som er valgt
     const resource = resources.filter(resource => resource.category === category)[0];
+    
     
     const activeButton = document.getElementById(category.toLowerCase());
     if (activeButton) {
