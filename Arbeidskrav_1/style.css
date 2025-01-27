@@ -38,7 +38,8 @@ body {
                     background-color: var(--white);
                     color: var(--dark);
                 } */
-                .active {
+                button:focus,
+                button.active {
                     background-color: var(--white);
                     color: var(--dark);
                 }

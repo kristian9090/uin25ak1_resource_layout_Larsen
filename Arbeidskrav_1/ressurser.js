@@ -95,12 +95,25 @@ const resources = [
     },
 ]
 
-
-
 // funksjon der nå siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
 window.onload = function() {
     showInfo('HTML')
 }
+
+
+
+// Funksjon der knappen blir hvit når kategorien som matches vises
+function whiteButton(category) {
+    // 
+    document.querySelectorAll('nav button').forEach(button => {
+        button.classList.remove('active');
+    })
+
+    // 
+    document.querySelector(`button[onclick="showInfo('${category}')"]`).classList.add('active');
+}
+
+
 
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
 function showInfo(category) {
@@ -128,5 +141,7 @@ function showInfo(category) {
     }
 
     // Skriver ut artikkel kortet i HTML
-    document.getElementById("info-section").innerHTML = resourcesHTML
+    document.getElementById("info-section").innerHTML = resourcesHTML;
+
+    whiteButton(category);
 }
