@@ -100,7 +100,6 @@ const resources = [
 // funksjon der nå siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
 window.onload = function() {
     showInfo('HTML')
-
 }
 
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
@@ -109,12 +108,6 @@ function showInfo(category) {
     // bruker .filter for å se om det finnes en resource med samme kategori som er valgt
     const resource = resources.filter(resource => resource.category === category)[0];
     
-    
-    const activeButton = document.getElementById(category.toLowerCase());
-    if (activeButton) {
-        activeButton.classList.add("active");
-    }
-
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
     if (resource) {
@@ -131,10 +124,9 @@ function showInfo(category) {
         </article>
         `;
     } else {
-        return "Ingen data å hente :(";
+        return "Ingen data å hente :("
     }
 
     // Skriver ut artikkel kortet i HTML
-    document.getElementById("info-section").innerHTML = resourcesHTML;
+    document.getElementById("info-section").innerHTML = resourcesHTML
 }
-
