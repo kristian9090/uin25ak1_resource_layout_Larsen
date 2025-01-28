@@ -107,17 +107,15 @@ function whiteButton(category) {
     const buttons = document.querySelectorAll('button')
     
     // Fjerner 'active' fra alle knapper
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].classList.remove('active')
-    }
+    buttons.forEach(button => button.classList.remove('active'));
 
-    // Legger til 'active' på knappen som matcher onclick
-    for (let i = 0; i < buttons.length; i++) {
-        if (buttons[i].getAttribute('onclick') === `showInfo('${category}')`) {
-            buttons[i].classList.add('active')
-            
+    // Legger til 'active' på knappen som blir trykket på, altså den som har samme kategori som parameteren
+    buttons.forEach(button => {
+        // getAttribute henter ut onclick og kjører funksjonen showInfo med parameteren som matcher
+        if (button.getAttribute('onclick') === `showInfo('${category}')`) {
+            button.classList.add('active');
         }
-    }
+    });
 }
 
 
@@ -129,7 +127,7 @@ function showInfo(category) {
     
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
-    if (resource) {
+    if (resource) { 
         resourcesHTML += `
             <article>
             <h3>${resource.category}</h3>
