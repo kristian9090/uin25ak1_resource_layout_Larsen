@@ -104,33 +104,18 @@ window.onload = function() {
 
 // Funksjon der knappen blir hvit når kategorien som matches vises
 function whiteButton(category) {
+    // 
     // I nav taggen, finner den alle buttons og fjerner active
     document.querySelectorAll('nav button').forEach(button => {
         /* Her fjerner den active i css */
         button.classList.remove('active');
     })
 
+    // 
     // Her legger den til active kun til knappen som er valgt og legger på css
     // Bruker template literals som finner knappen som er valgt, og tar imot category i parameter. Gjør knappen hvit som matcher og legger til kategorien active
-    document.querySelector(`button[data-category="${category}"]`).classList.add('active');
+    document.querySelector(`button[onclick="showInfo('${category}')"]`).classList.add('active');
 }
-
-// function updateButtonState(category) {
-//     // Hent alle knappene i nav-elementet
-//     const buttons = document.querySelectorAll('nav button');
-
-//     // Gå gjennom alle knappene
-//     buttons.forEach(button => {
-//         // Sjekk om knappens data-category samsvarer med den valgte kategorien
-//         if (button.dataset.category === category) {
-//             // Hvis ja, legg til 'active'-klassen
-//             button.classList.add('active');
-//         } else {
-//             // Hvis nei, fjern 'active'-klassen
-//             button.classList.remove('active');
-//         }
-//     });
-// }
 
 
 
@@ -161,7 +146,7 @@ function showInfo(category) {
 
     // Skriver ut artikkel kortet i HTML
     document.getElementById("info-section").innerHTML = resourcesHTML;
+   
 
-    // Kjører funksjonen med category som parameter
-    whiteButton(category);
+    whiteButton(category)
 }
