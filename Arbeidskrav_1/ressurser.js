@@ -101,22 +101,24 @@ window.onload = function() {
 }
 
 
-
-// Funksjon der knappen blir hvit når kategorien som matches vises
 function whiteButton(category) {
-    // 
-    // I nav taggen, finner den alle buttons og fjerner active
-    document.querySelectorAll('nav button').forEach(button => {
-        /* Her fjerner den active i css */
-        button.classList.remove('active');
-    })
 
-    // 
-    // Her legger den til active kun til knappen som er valgt og legger på css
-    // Bruker template literals som finner knappen som er valgt, og tar imot category i parameter. Gjør knappen hvit som matcher og legger til kategorien active
-    document.querySelector(`button[onclick="showInfo('${category}')"]`).classList.add('active');
+    // Lager const for alle knapper
+    const buttons = document.querySelectorAll('button')
+    
+    // Fjerner 'active' fra alle knapper
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active')
+    }
+
+    // Legger til 'active' på knappen som matcher onclick
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].getAttribute('onclick') === `showInfo('${category}')`) {
+            buttons[i].classList.add('active')
+            
+        }
+    }
 }
-
 
 
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
@@ -148,5 +150,6 @@ function showInfo(category) {
     document.getElementById("info-section").innerHTML = resourcesHTML;
    
 
+    // Kjører funksjonen whiteButton med category som parameter
     whiteButton(category)
 }
