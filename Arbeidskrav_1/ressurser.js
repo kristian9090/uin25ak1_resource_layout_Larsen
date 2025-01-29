@@ -104,16 +104,15 @@ function whiteButton(category) {
     // Fjerner 'active' class fra alle knapper og legger til 'active' class til knappen som samsvarer med kategorien
     document.querySelectorAll('button').forEach(button => {
         // bruker .toggle for å legge til classen 'active' i knappen som er valgt
-        //bruker button for å finne knappen .innerHTML for å manipulere innholdet i knappen og .includes for å se om kategorien er i knappen
+        //bruker button for å finne knappen, og .innerHTML for å manipulere innholdet i knappen og .includes for å se om kategorien er i knappen
         button.classList.toggle('active', button.innerHTML.includes(category));
     });
 }
 
-
-// Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
+// Deklarerer en funksjon som viser informasjon om forskjellige temaer innenfor webutvikling
 function showInfo(category) {
 
-    // bruker .filter for å se om det finnes en resource med samme kategori som er valgt i knappen
+    // bruker .find for å se om det finnes en resource med samme kategori som er valgt i knappen
     const resource = resources.find(resource => resource.category === category);
     
     // tom variabel som senere oppdateres
@@ -124,10 +123,12 @@ function showInfo(category) {
             <h3>${resource.category}</h3>
             <p>${resource.text}</p>
             <ul>
-           <!-- bruker .map for å lage transformere arrayen til en streng
-            bruker .join for å slå sammen strengene
-            -->
-            ${resource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`).join('')}
+        `;
+        // bruker .forEach for å gå gjennom kildene og legge til hver kilde som en listeelement
+        resource.sources.forEach(source => {
+            resourcesHTML += `<li><a href="${source.url}">${source.title}</a></li>`;
+        });
+        resourcesHTML += `
             </ul>
         </article>
         `;
@@ -136,7 +137,6 @@ function showInfo(category) {
     // Skriver ut artikkel kortet i HTML
     document.getElementById("info-section").innerHTML = resourcesHTML;
    
-
     // Kjører funksjonen whiteButton med category som parameter
     whiteButton(category)
 }
