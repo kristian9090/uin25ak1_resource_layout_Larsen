@@ -93,28 +93,18 @@ const resources = [
             },
         ]
     },
-]
-
+] 
 // funksjon der nå siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
 window.onload = function() {
     showInfo('HTML')
 }
 
-
+// Deklarerer funksjonen whiteButton med category i parameter
 function whiteButton(category) {
+    // Fjerner 'active' class fra alle knapper og legger til 'active' class til knappen som samsvarer med kategorien
+    document.querySelectorAll('nav button').forEach(button => {
 
-    // Lager const for alle knapper
-    const buttons = document.querySelectorAll('button')
-    
-    // Fjerner 'active' fra alle knapper
-    buttons.forEach(button => button.classList.remove('active'));
-
-    // Legger til 'active' på knappen som blir trykket på, altså den som har samme kategori som parameteren
-    buttons.forEach(button => {
-        // getAttribute henter ut onclick og kjører funksjonen showInfo med parameteren som matcher
-        if (button.getAttribute('onclick') === `showInfo('${category}')`) {
-            button.classList.add('active');
-        }
+        button.classList.toggle('active', button.innerHTML.includes(category));
     });
 }
 
@@ -122,8 +112,8 @@ function whiteButton(category) {
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer inenfor webutvikling
 function showInfo(category) {
 
-    // bruker .filter for å se om det finnes en resource med samme kategori som er valgt
-    const resource = resources.filter(resource => resource.category === category)[0];
+    // bruker .filter for å se om det finnes en resource med samme kategori som er valgt i knappen
+    const resource = resources.find(resource => resource.category === category);
     
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
@@ -140,8 +130,6 @@ function showInfo(category) {
             </ul>
         </article>
         `;
-    } else {
-        return "Ingen data å hente :("
     }
 
     // Skriver ut artikkel kortet i HTML
