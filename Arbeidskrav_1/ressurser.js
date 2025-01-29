@@ -102,7 +102,7 @@ window.onload = function() {
 // Deklarerer funksjonen whiteButton med category i parameter
 function whiteButton(category) {
     // Fjerner 'active' class fra alle knapper og legger til 'active' class til knappen som samsvarer med kategorien
-    document.querySelectorAll('nav button').forEach(button => {
+    document.querySelectorAll('button').forEach(button => {
         // bruker .toggle for å legge til classen 'active' i knappen som er valgt
         //bruker button for å finne knappen .innerHTML for å manipulere innholdet i knappen og .includes for å se om kategorien er i knappen
         button.classList.toggle('active', button.innerHTML.includes(category));
