@@ -94,7 +94,7 @@ const resources = [
         ]
     },
 ] 
-// funksjon der nå siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
+// funksjon når siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
 window.onload = function() {
     showInfo('HTML')
 }
@@ -124,7 +124,7 @@ function showInfo(category) {
             <h3>${resource.category}</h3>
             <p>${resource.text}</p>
             <ul>
-            <!-- bruker .map for å lage transformere arrayen til en streng
+           <!-- bruker .map for å lage transformere arrayen til en streng
             bruker .join for å slå sammen strengene
             -->
             ${resource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`).join('')}
