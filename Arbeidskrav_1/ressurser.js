@@ -95,9 +95,9 @@ const resources = [
     },
 ] 
 // funksjon når siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
-window.onload = function() {
-    showInfo('HTML')
-}
+// window.onload = function() {
+//     showInfo('HTML')
+// }
 
 // Deklarerer funksjonen whiteButton med category i parameter
 function whiteButton(category) {
@@ -108,15 +108,17 @@ function whiteButton(category) {
         button.classList.toggle('active', button.innerHTML.includes(category));
     });
 }
+
+
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer innenfor webutvikling
 function showInfo(category) {
 
     // bruker .filter for å finne alle ressurser med samme kategori som er valgt i knappen
-    const filteredResources = resources.filter(resource => resource.category === category);
+    const filterResource = resources.filter(resource => resource.category === category);
     
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
-    filteredResources.forEach(resource => {
+    filterResource.map(resource => {
         resourcesHTML += `
             <article>
             <h3>${resource.category}</h3>
