@@ -93,32 +93,58 @@ const resources = [
             },
         ]
     },
-] 
-// funksjon når siden lastes inn kjører funksjonen showInfo med HTML som parameter, slik at det er innhold når siden lastes inn
-// window.onload = function() {
-//     showInfo('HTML')
-// }
+]
+
+
 
 // Deklarerer funksjonen whiteButton med category i parameter
 function whiteButton(category) {
-    // Fjerner 'active' class fra alle knapper og legger til 'active' class til knappen som samsvarer med kategorien
+
+    // alle med class button, forEach går gjennom alle knappene og legger til classen 'active' i knappen som er trykka på
     document.querySelectorAll('button').forEach(button => {
         // bruker .toggle for å legge til classen 'active' i knappen som er valgt
-        //bruker button for å finne knappen, og .innerHTML for å manipulere innholdet i knappen og .includes for å se om kategorien er i knappen
+        // mellomlagrer button for å finne knappen, og .innerHTML for å manipulere innholdet i knappen og .includes for å se om kategorien er i knappen
         button.classList.toggle('active', button.innerHTML.includes(category));
     });
 }
 
 
+// Deklarerer en funksjon som kjører når siden er ferdig lastet
+function showLoad() {
+    // .filter og finner resource som er HTML, da den skal bli vist først
+    const htmlResources = resources.filter(resource => resource.category === "HTML")
+
+    // går igjennom category HTML ved hjelp av .map()
+    let resourcesHTML = htmlResources.map(resource => `
+        <article>
+            <h3>${resource.category}</h3>
+            <p>${resource.text}</p>
+            <ul>
+                ${resource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`).join('')}
+            </ul>
+        </article>
+    `).join('');
+
+    // skriver ut til id info-section
+    document.getElementById("info-section").innerHTML = resourcesHTML
+
+    // Kjører funksjonen whiteButton med HTML som parameter
+    whiteButton("HTML")
+}
+
+// Legger til en event listener for å kjøre showLoad når siden er ferdig lastet
+ window.onload = showLoad
+
+
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer innenfor webutvikling
 function showInfo(category) {
 
-    // bruker .filter for å finne alle ressurser med samme kategori som er valgt i knappen
-    const filterResource = resources.filter(resource => resource.category === category);
+    // bruker .find for å se om det finnes en resource med samme kategori som er valgt i knappen
+    const resource = resources.find(resource => resource.category === category);
     
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
-    filterResource.map(resource => {
+    if (resource) { 
         resourcesHTML += `
             <article>
             <h3>${resource.category}</h3>
@@ -133,7 +159,7 @@ function showInfo(category) {
             </ul>
         </article>
         `;
-    });
+    }
 
     // Skriver ut artikkel kortet i HTML
     document.getElementById("info-section").innerHTML = resourcesHTML;
