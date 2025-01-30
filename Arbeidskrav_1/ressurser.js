@@ -110,7 +110,7 @@ function whiteButton(category) {
 
 
 // Deklarerer en funksjon som kjører når siden er ferdig lastet
-function showLoad() {
+function displayLoad() {
     // .filter og finner resource som er HTML, da den skal bli vist først
     const htmlResources = resources.filter(resource => resource.category === "HTML")
 
@@ -133,7 +133,7 @@ function showLoad() {
 }
 
 // Legger til en event listener for å kjøre showLoad når siden er ferdig lastet
- window.onload = showLoad
+ window.onload = displayLoad
 
 
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer innenfor webutvikling
