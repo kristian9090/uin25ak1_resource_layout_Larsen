@@ -108,16 +108,15 @@ function whiteButton(category) {
         button.classList.toggle('active', button.innerHTML.includes(category));
     });
 }
-
 // Deklarerer en funksjon som viser informasjon om forskjellige temaer innenfor webutvikling
 function showInfo(category) {
 
-    // bruker .find for å se om det finnes en resource med samme kategori som er valgt i knappen
-    const resource = resources.find(resource => resource.category === category);
+    // bruker .filter for å finne alle ressurser med samme kategori som er valgt i knappen
+    const filteredResources = resources.filter(resource => resource.category === category);
     
     // tom variabel som senere oppdateres
     let resourcesHTML = "";
-    if (resource) { 
+    filteredResources.forEach(resource => {
         resourcesHTML += `
             <article>
             <h3>${resource.category}</h3>
@@ -132,7 +131,7 @@ function showInfo(category) {
             </ul>
         </article>
         `;
-    }
+    });
 
     // Skriver ut artikkel kortet i HTML
     document.getElementById("info-section").innerHTML = resourcesHTML;
